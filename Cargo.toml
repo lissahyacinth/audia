@@ -1,0 +1,23 @@
+[package]
+name = "Audia"
+version = "0.1.0"
+authors = ["Lissa Hyacinth"]
+edition = "2018"
+
+[dependencies]
+hound = "*"
+# Reqwest & Serde JSON are for Message Passing in MVP. They'll be removed in the final product and torch-rs
+#   will be used instead with a live model.
+serde_json = "1.0"
+reqwest = { version = "*", features = ["json"] }
+serde = { version = "*", features = ["derive"] }
+futures = "*"
+tokio = { version = "*", features = ["macros", "rt-multi-thread"] }
+env_logger = "0.8.3"
+log = "0.4.14"
+
+[target.'cfg(windows)'.dependencies]
+winapi = { version = "0.3", features = ["mmdeviceapi", "objbase", "coml2api", "ksmedia", "mmreg", "audioclient", "combaseapi", "propidl", "propsys", "functiondiscoverykeys_devpkey", "stralign"] }
+lazy_static = "*"
+bytes = "1.0.1"
+anyhow = "*"
